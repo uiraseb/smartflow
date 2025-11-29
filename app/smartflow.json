@@ -1,0 +1,73 @@
+{
+  "info": {
+    "_postman_id": "7c9f8e3a-7d2f-4e6b-9d1a-8f5e6c7b9d2a",
+    "name": "SmartFlow",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Start Workflow – Proposta Comercial",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"proposal_approval\",\n  \"trigger\": \"manual\",\n  \"payload\": {\n    \"text\": \"Prezados, segue proposta comercial no valor de R$ 850.000,00 com prazo de pagamento em 90 dias e garantia de entrega em 60 dias corridos.\"\n  }\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/workflows",
+          "host": ["{{base_url}}"],
+          "path": ["workflows"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Workflow Detail",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/workflows/1",
+          "host": ["{{base_url}}"],
+          "path": ["workflows", "1"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ]
+}
